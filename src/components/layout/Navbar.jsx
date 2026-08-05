@@ -7,16 +7,27 @@ export default function Navbar({
   return (
     <>
       {/* STICKY NAVIGATION BAR */}
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-stone-200 shadow-sm">
+      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-stone-200 shadow-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           <a data-testid="nav-logo" href="#" className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-[#1E4D2B] text-[#D4AF37] flex items-center justify-center font-bold text-xl shadow-inner border border-[#D4AF37]">
-              G
-            </div>
-            <div>
-              <span className="font-serif font-bold text-lg sm:text-xl tracking-tight text-[#1E4D2B] block">GUDWIN</span>
-              <span className="text-[10px] tracking-widest uppercase text-stone-500 font-semibold block -mt-1">Herbal Healthcare</span>
-            </div>
+            <a
+              data-testid="nav-logo"
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                window.scrollTo({
+                  top: 0,
+                  behavior: "smooth",
+                });
+              }}
+              className="flex items-center"
+            >
+              <img
+                src="/gudwinlogo.webp"
+                alt="GUDWIN Herbal Healthcare"
+                className="h-16 sm:h-20 w-auto object-contain"
+              />
+            </a>
           </a>
 
           {/* Desktop Nav Links */}
