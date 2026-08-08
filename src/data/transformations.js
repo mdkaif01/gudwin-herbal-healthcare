@@ -2,29 +2,54 @@
 export const transformationResults = [
   {
     id: "1",
-    patientName: "Rajesh Kumar (Mau)",
-    issue: "Stage 3 Receding Hairline & Thinning",
-    duration: "3 Months Program",
-    beforeImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80",
-    afterImage: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80",
-    testimonial: "Dr. Wali Ahad's herbal treatment worked wonders when conventional oils failed. My hair density is back!"
+    image: "/transformations/result1.webp"
   },
   {
     id: "2",
-    patientName: "Priya Singh (Varanasi)",
-    issue: "Severe Hair Fall & Post-Partum Thinning",
-    duration: "2 Months Course",
-    beforeImage: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
-    afterImage: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80",
-    testimonial: "The scalp detox and herbal therapy stopped my hair fall within 3 weeks. Extremely grateful to GUDWIN."
+    image: "/transformations/result2.webp"
   },
   {
     id: "3",
-    patientName: "Amit Verma (Azamgarh)",
-    issue: "Stubborn Dandruff & Scalp Psoriasis",
-    duration: "45 Days Detox",
-    beforeImage: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=600&q=80",
-    afterImage: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=600&q=80",
-    testimonial: "No more embarrassing flakes or itching. The natural herbal oils prescribed are exceptionally pure."
-  }
+    image: "/transformations/result3.webp"
+  },
+  {
+    id: "4",
+    image: "/transformations/result4.webp"
+  },
+  {
+    id: "5",
+    image: "/transformations/result5.webp"
+  },
+  {
+    id: "6",
+    image: "/transformations/result6.webp"
+  },
+  {
+    id: "7",
+    image: "/transformations/result7.webp"
+  },
+  {
+    id: "8",
+    image: "/transformations/result8.webp"
+  },
+  {
+    id: "9",
+    image: "/transformations/result9.webp"
+  },
+  {
+    id: "10",
+    image: "/transformations/result10.webp"
+  },
+  {
+    id: "11",
+    image: "/transformations/result11.webp"
+  },
+  {
+    id: "12",
+    image: "/transformations/result12.webp"
+  },
+  {
+    id: "13",
+    image: "/transformations/result13.webp"
+  },
 ];
