@@ -1,7 +1,75 @@
-import { ArrowRight, CheckCircle2, ShieldCheck, Calendar, MessageCircle } from "lucide-react";
+import { ShieldCheck, Calendar, MessageCircle } from "lucide-react";
 import { clinicInfo } from "../../data";
 import { motion } from "framer-motion";
 import { fadeLeft, fadeRight } from "../../animations/variants";
+import { useEffect, useState } from "react";
+
+/* =========================================
+   Animated Statistic
+   ========================================= */
+
+function AnimatedStat({ value }) {
+  const [displayValue, setDisplayValue] = useState("0");
+
+  useEffect(() => {
+    const match = String(value).match(/[\d,.]+/);
+
+    if (!match) {
+      setDisplayValue(value);
+      return;
+    }
+
+    const numericValue = parseFloat(
+      match[0].replace(/,/g, "")
+    );
+
+    const suffix = String(value).replace(match[0], "");
+
+    const duration = 1800;
+    const startTime = performance.now();
+
+    let animationFrame;
+
+    const animate = (currentTime) => {
+      const elapsed = currentTime - startTime;
+
+      const progress = Math.min(
+        elapsed / duration,
+        1
+      );
+
+      // Smooth ease-out
+      const easedProgress =
+        1 - Math.pow(1 - progress, 3);
+
+      const currentValue =
+        numericValue * easedProgress;
+
+      const formattedValue =
+        numericValue % 1 === 0
+          ? Math.floor(currentValue).toLocaleString()
+          : currentValue.toFixed(1);
+
+      setDisplayValue(
+        `${formattedValue}${suffix}`
+      );
+
+      if (progress < 1) {
+        animationFrame =
+          requestAnimationFrame(animate);
+      }
+    };
+
+    animationFrame =
+      requestAnimationFrame(animate);
+
+    return () => {
+      cancelAnimationFrame(animationFrame);
+    };
+  }, [value]);
+
+  return <>{displayValue}</>;
+}
 
 export default function Hero() {
   return (
@@ -56,14 +124,41 @@ export default function Hero() {
                 </motion.a>
               </div>
 
-              {/* Quick stats banner */}
+              {/* =========================================
+                  Animated Quick Stats
+                  ========================================= */}
+
               <div className="grid grid-cols-3 gap-4 pt-8 border-t border-stone-200/80 mt-8">
+
                 {clinicInfo.stats.slice(0, 3).map((stat, idx) => (
-                  <div key={idx} className="text-center lg:text-left">
-                    <div className="font-serif text-2xl sm:text-3xl font-bold text-[#1E4D2B]">{stat.value}</div>
-                    <div className="text-xs sm:text-sm text-stone-600 font-medium">{stat.label}</div>
-                  </div>
+                  <motion.div
+                    key={idx}
+                    className="text-center lg:text-left"
+                    initial={{
+                      opacity: 0,
+                      y: 10,
+                    }}
+                    animate={{
+                      opacity: 1,
+                      y: 0,
+                    }}
+                    transition={{
+                      delay: 0.8 + idx * 0.15,
+                      duration: 0.5,
+                    }}
+                  >
+
+                    <div className="font-serif text-2xl sm:text-3xl font-bold text-[#1E4D2B] tabular-nums">
+                      <AnimatedStat value={stat.value} />
+                    </div>
+
+                    <div className="text-xs sm:text-sm text-stone-600 font-medium">
+                      {stat.label}
+                    </div>
+
+                  </motion.div>
                 ))}
+
               </div>
 
             </motion.div>
