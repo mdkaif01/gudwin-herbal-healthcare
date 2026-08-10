@@ -235,3 +235,105 @@ code {
   opacity: 0.35;
   pointer-events: none;
 }
+
+
+/* =========================================
+   Client Reviews Slider
+   ========================================= */
+
+.reviews-swiper {
+  overflow: hidden;
+}
+
+.reviews-swiper .swiper-slide {
+  height: auto;
+}
+
+/* Navigation */
+
+.reviews-swiper .swiper-button-next,
+.reviews-swiper .swiper-button-prev {
+  width: 32px;
+  height: 32px;
+  margin-top: -16px;
+
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #D4AF37;
+  border-radius: 8px;
+
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.reviews-swiper .swiper-button-next::after,
+.reviews-swiper .swiper-button-prev::after {
+  font-size: 11px;
+  font-weight: 800;
+  color: #1E4D2B;
+}
+
+.reviews-swiper .swiper-button-next:hover,
+.reviews-swiper .swiper-button-prev:hover {
+  background: #1E4D2B;
+  border-color: #1E4D2B;
+  transform: translateY(-1px);
+  box-shadow: 0 5px 14px rgba(30, 77, 43, 0.20);
+}
+
+.reviews-swiper .swiper-button-next:hover::after,
+.reviews-swiper .swiper-button-prev:hover::after {
+  color: #FFFFFF;
+}
+
+/* Pagination */
+
+.reviews-swiper .swiper-pagination {
+  bottom: 0 !important;
+}
+
+.reviews-swiper .swiper-pagination-bullet {
+  width: 7px;
+  height: 7px;
+  background: #A7B8AD;
+  opacity: 1;
+
+  transition:
+    width 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.reviews-swiper .swiper-pagination-bullet-active {
+  width: 22px;
+  height: 7px;
+  border-radius: 9999px;
+  background: #1E4D2B;
+}
+
+/* Mobile */
+
+@media (max-width: 639px) {
+  .reviews-swiper .swiper-button-next,
+  .reviews-swiper .swiper-button-prev {
+    width: 28px;
+    height: 28px;
+    margin-top: -14px;
+    border-radius: 7px;
+  }
+
+  .reviews-swiper .swiper-button-next::after,
+  .reviews-swiper .swiper-button-prev::after {
+    font-size: 9px;
+  }
+}
+
+/* Disabled */
+
+.reviews-swiper .swiper-button-disabled {
+  opacity: 0.35;
+  pointer-events: none;
+}
