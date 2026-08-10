@@ -13,7 +13,7 @@ export default function Footer() {
 
             <div className="flex items-center">
               <img
-                src="public/gudwinlogo.webp"
+                src="/gudwinlogo.webp"
                 className="w-40 sm:w-44 h-auto object-contain"
                 loading="lazy"
                 decoding="async"
