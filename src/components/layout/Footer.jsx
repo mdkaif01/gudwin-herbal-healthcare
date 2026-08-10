@@ -1,4 +1,3 @@
-import { MessageCircle } from "lucide-react";
 import { clinicInfo } from "../../data";
 
 export default function Footer() {
@@ -6,31 +5,23 @@ export default function Footer() {
     <footer className="bg-[#14331d] text-emerald-100 pt-16 pb-12 border-t border-emerald-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-12 border-b border-emerald-800">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 pb-8 border-b border-emerald-800">
 
           {/* Brand */}
 
-          <div className="space-y-4">
+          <div className="space-y-5">
 
-            <div className="flex items-center gap-3">
-
-              <div className="w-10 h-10 rounded-full bg-[#D4AF37] text-[#1E4D2B] flex items-center justify-center font-bold text-xl">
-                G
-              </div>
-
-              <div>
-                <span className="font-serif font-bold text-lg text-white block">
-                  GUDWIN
-                </span>
-
-                <span className="text-[10px] uppercase tracking-widest text-[#D4AF37] font-semibold">
-                  Herbal Healthcare
-                </span>
-              </div>
-
+            <div className="flex items-center">
+              <img
+                src="public/gudwinlogo.webp"
+                alt="GUDWIN Herbal Healthcare"
+                className="w-40 sm:w-44 h-auto object-contain"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
 
-            <p className="text-xs text-emerald-200 leading-relaxed">
+            <p className="text-xs text-emerald-200 leading-relaxed max-w-sm">
               GUDWIN Herbal Healthcare is a trusted centre for natural hair
               restoration and scalp care. Guided by Dr. Wali Ahad, we blend
               Ayurvedic wisdom with modern hair treatment methods.
@@ -115,30 +106,14 @@ export default function Footer() {
               {clinicInfo.address}
             </p>
 
-            <a
-              href="https://wa.me/919990364288"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#D4AF37] text-[#1E4D2B] px-4 py-2 rounded-lg font-semibold hover:bg-amber-400"
-            >
-              <MessageCircle className="w-4 h-4" />
-              WhatsApp Consult
-            </a>
-
           </div>
 
         </div>
 
-        <div className="pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-emerald-300">
-
+        <div className="pt-6 text-center text-xs text-emerald-300">
           <span>
-            © 2025 GUDWIN Herbal Healthcare. All Rights Reserved.
+            © 2026 GUDWIN Herbal Healthcare. All Rights Reserved.
           </span>
-
-          <span className="mt-3 sm:mt-0">
-            Guided by Dr. Wali Ahad • Mau, Uttar Pradesh
-          </span>
-
         </div>
 
       </div>
