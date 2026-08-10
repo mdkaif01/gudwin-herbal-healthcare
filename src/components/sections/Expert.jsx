@@ -1,5 +1,68 @@
 import { Award, ArrowRight, Phone } from "lucide-react";
 import { clinicInfo } from "../../data";
+import { useEffect, useState } from "react";
+
+/* =========================================
+   Animated Statistic
+   ========================================= */
+function AnimatedStat({ value }) {
+  const [displayValue, setDisplayValue] = useState("0");
+
+  useEffect(() => {
+    const match = String(value).match(/[\d,.]+/);
+
+    if (!match) {
+      setDisplayValue(value);
+      return;
+    }
+
+    const numericValue = parseFloat(
+      match[0].replace(/,/g, "")
+    );
+
+    const suffix = String(value).replace(match[0], "");
+
+    const duration = 1800;
+    const startTime = performance.now();
+
+    let animationFrame;
+
+    const animate = (currentTime) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+
+      // Smooth ease-out
+      const easedProgress =
+        1 - Math.pow(1 - progress, 3);
+
+      const currentValue =
+        numericValue * easedProgress;
+
+      const formattedValue =
+        numericValue % 1 === 0
+          ? Math.floor(currentValue).toLocaleString()
+          : currentValue.toFixed(1);
+
+      setDisplayValue(
+        `${formattedValue}${suffix}`
+      );
+
+      if (progress < 1) {
+        animationFrame =
+          requestAnimationFrame(animate);
+      }
+    };
+
+    animationFrame =
+      requestAnimationFrame(animate);
+
+    return () => {
+      cancelAnimationFrame(animationFrame);
+    };
+  }, [value]);
+
+  return <>{displayValue}</>;
+}
 
 export default function Expert() {
   return (
@@ -8,12 +71,16 @@ export default function Expert() {
 
         <div className="bg-gradient-to-br from-[#1E4D2B] to-[#14331d] rounded-3xl p-8 sm:p-12 text-white shadow-2xl relative overflow-hidden">
 
+          {/* Decorative Background Icon */}
           <div className="absolute right-0 bottom-0 opacity-10 translate-x-12 translate-y-12 pointer-events-none">
             <Award className="w-96 h-96 text-[#D4AF37]" />
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
 
+            {/* =========================================
+              Expert Image
+              ========================================= */}
             <div className="lg:col-span-4 text-center">
 
               <div className="relative inline-block">
@@ -32,7 +99,10 @@ export default function Expert() {
               </div>
 
             </div>
-
+            
+            {/* =========================================
+              Expert Information
+              ========================================= */}
             <div className="lg:col-span-8 space-y-6">
 
               <div className="inline-flex items-center gap-2 bg-[#D4AF37]/20 text-[#D4AF37] px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider border border-[#D4AF37]/40">
@@ -50,41 +120,50 @@ export default function Expert() {
               <p className="text-emerald-100 text-base sm:text-lg leading-relaxed">
                 {clinicInfo.expertBio}
               </p>
-
+              
+              {/* =========================================
+                Expert Stats
+                ========================================= */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
 
+                {/* Years of Experience */}
                 <div className="bg-white/10 p-4 rounded-xl backdrop-blur-sm border border-emerald-800">
-                  <div className="text-[#D4AF37] font-serif text-2xl font-bold">
-                    100%
+                  <div className="text-[#D4AF37] font-serif text-2xl font-bold tabular-nums">
+                    <AnimatedStat value="12+" />
                   </div>
 
                   <div className="text-xs text-emerald-200">
-                    Natural & Herbal Safety
+                    Years of Experience
                   </div>
                 </div>
 
+                {/* Patients Guided */}
                 <div className="bg-white/10 p-4 rounded-xl backdrop-blur-sm border border-emerald-800">
-                  <div className="text-[#D4AF37] font-serif text-2xl font-bold">
-                    500+
+                  <div className="text-[#D4AF37] font-serif text-2xl font-bold tabular-nums">
+                    <AnimatedStat value="500+" />
                   </div>
 
                   <div className="text-xs text-emerald-200">
-                    Successful Regrowth Cases
+                    Patients Guided
                   </div>
                 </div>
 
+                {/* Location */}
                 <div className="bg-white/10 p-4 rounded-xl backdrop-blur-sm border border-emerald-800">
                   <div className="text-[#D4AF37] font-serif text-2xl font-bold">
                     Mau, UP
                   </div>
 
                   <div className="text-xs text-emerald-200">
-                    Opp. Faizi Gate Clinic
+                    Near Faizi Gate
                   </div>
                 </div>
 
               </div>
-
+              
+              {/* =========================================
+                CTA Buttons
+                ========================================= */}
               <div className="pt-4 flex flex-wrap gap-4">
 
                 <a
